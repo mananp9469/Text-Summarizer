@@ -33,7 +33,7 @@ for file_path in list_of_files:
   filepath = Path(file_path)
   filedir, filename = os.path.split(filepath)
 
-  if not os.path.exists(filedir):
+  if filedir != "":
     os.makedirs(filedir, exist_ok= True)
     logging.info(f"Created directory: {filedir} for the file {filename}")
 
@@ -42,3 +42,6 @@ for file_path in list_of_files:
     with open(filepath, "w") as f:
       pass
       logging.info(f"Creating empty file: {filepath}")
+
+  else:
+    logging.info(f"File already exists: {filepath}")
